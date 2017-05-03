@@ -1,0 +1,51 @@
+.jumbotron {
+    padding-top: 20px;
+    padding-bottom: 0;
+     margin-bottom: 0; 
+    color: inherit;
+    background-color: #fff;
+}
+.myName{
+    font-family: 'Handlee', cursive;
+}
+.navbar {
+    border: none;
+}
+.navbar-default {
+    background-color: #fff;
+
+}
+.barItem{
+    transition-duration: .15s;
+}
+.barItem:hover{
+    transform: scale(1.15);
+}
+.navbar-default .navbar-nav>.active>a, 
+.navbar-default .navbar-nav>.active>a:focus, 
+.navbar-default .navbar-nav>.active>a:hover {
+    background-color:#fff;
+
+    
+    
+
+}
+
+.line, .hoverLine{
+    position: absolute;
+    top:35px;
+    left:10px;
+    height: 5px;
+    width: 75px;
+    border-radius: 100%;
+    background-color: lightgrey;
+}
+.line2{
+    position: absolute;
+    top:50px;
+    left:23px;
+    height: 5px;
+    width: 50px;
+    border-radius: 100%;
+    background-color: lightgrey;
+}
