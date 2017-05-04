@@ -49,3 +49,7 @@
     border-radius: 100%;
     background-color: lightgrey;
 }
+.barItem{
+    color: black;
+    font-weight: bold;
+}
