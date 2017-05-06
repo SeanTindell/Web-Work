@@ -62,64 +62,22 @@
     position: relative;
 }
 .headerText{
+    padding: 0px auto;
     padding-top: 50px;
     padding-left: 50px
 }
-#title{
-    position: absolute;
-    padding-top: 8px;
-    border: 2px solid #515151;
-    width: 250px;
-    height: 40px;
-    text-align: center;
-    border-radius: 4px;
-    background-color: #fff;
-    top:100px;
-    left:150px;
-}
-.nameLanding{
-    width:250px;
-    border-top: none;
-    border-left: none;
-    border-bottom: 4px solid #515151;
-    border-right: 4px solid #515151;
-    padding-bottom: 15px;
-    border-radius: 4px;
-}
 
-
-.top-line{
-    position: absolute;
-    width:660px;
-    border-top: 2px solid #515151;
+.landingItem{
+    display: inline;
+}
+.landingItem>a{
+    display: inline;
+    color:black; 
+    padding: 10px;
     
 }
-
-td:first-of-type{
-
-    border-right: 3px solid #515151;
-    height: 400px;
-    width:150px;
-     
-
-}
-
-.upper-line{
-    position: absolute;
-    top: 170px;
-    left: 100px;
-    width: 550px;
-    margin: 0 auto;
-    border-top: 2px solid #515151;
-}
-.landing-nav-item{
-    border: 2px solid #515151;
-    text-align: center;
-    padding:5px;
-}
-.landing-nav-item>a {
-    color:black;
-
+.landingItem>a:hover{
+    text-decoration: none;
 }
 
 /*landing end*/
