@@ -59,16 +59,7 @@ function circle()  {
             });
             angle += step;
         });
-    //     fields.each(function() {
-    //       var  x = Math.round(width/2 + radius * Math.cos(angle+t) - $(this).width()/2)+50;
-    //       var y = Math.round(height/2 + radius * Math.sin(angle+t) - $(this).height()/2)+75;
-    //   $(this).animate({
-    //             left: x + 'px',
-    //             top: y + 'px'
-    //         });
-    //     },1 ,function(){
-    //         circle();
-    //     });
+
 }
 
     
