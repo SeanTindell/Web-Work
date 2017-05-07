@@ -92,10 +92,12 @@
     display: inline;
     color:black; 
     padding: 10px;
+
     
 }
 .landingItem>a:hover{
     text-decoration: none;
+    font-weight: bold;
 }
 
 /*landing end*/
