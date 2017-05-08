@@ -108,5 +108,33 @@
     background-color: lightgray;
     height: 10px;
 }
+.skills strong{
+    text-decoration: underline;
+}
+.skills ul{
+    padding:0;
+     list-style-type: none;
+}
 
 /*about me end*/
+/* contact*/
+i{
+    font-size: 1.5em;
+}
+.contactItem a{
+    color:black;
+
+}
+.contactBoard{
+    padding-top: 100px;
+    height: 400px;
+    width:100%;
+    text-align: center;
+}
+.btn{
+    transition: all .1s
+}
+.btn:hover{
+    transform: scale(1.5,1.5)
+}
+/*contact end*/
