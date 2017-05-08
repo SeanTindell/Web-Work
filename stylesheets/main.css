@@ -99,6 +99,9 @@
     text-decoration: none;
     font-weight: bold;
 }
+.panel-default {
+     border:none;
+}
 
 /*landing end*/
 
@@ -141,3 +144,28 @@ form{
     display: inline;
 }
 /*contact end*/
+/*work*/
+#workContainer{
+    position:relative;
+}
+.workItem{
+    position:absolute;
+    width: 175px;
+    height:175px;
+    border:3px solid lightgray;
+    background-color: #fff;
+    box-shadow: 0 0 20px grey;
+    border-radius:100%;
+    transition: all .5s
+}
+.workItem:hover{
+    transform: scale(2.25);
+    z-index: 100;
+    cursor: pointer;
+}
+.workItem img{
+    width: 100%;
+    border-radius:100%;
+
+}
+/*work end*/
