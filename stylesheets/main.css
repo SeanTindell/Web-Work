@@ -137,4 +137,7 @@ i{
 .btn:hover{
     transform: scale(1.5,1.5)
 }
+form{
+    display: inline;
+}
 /*contact end*/
