@@ -169,3 +169,12 @@ form{
 
 }
 /*work end*/
+footer{
+
+    width:100%;
+    padding:50px;
+    text-align: center;
+    font-size: 20px;
+    vertical-align:text-bottom;
+
+}
