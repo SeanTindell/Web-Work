@@ -1,0 +1,99 @@
+.section{
+    min-height:100vh;
+    margin-bottom: 20px;
+    border-bottom: 2px solid grey;
+    border-top: 2px solid grey;
+    width:100%;
+}
+
+/*Home page area css*/
+.namePlate{
+    position: relative;
+    height: 350px;
+    margin-top:30vh;
+    width:350px;
+}
+.portrait{
+    height: 150px;
+    width: 150px;
+    border-radius: 100%;
+    border:2px solid grey;
+}
+.name{
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+.title{
+    font-size: 20px;
+    margin-top: 10px;
+}
+.homeNav{
+    position: absolute;
+    font-size: 1.5em;
+    list-style-type: none;
+    top:120px;
+    left:135px;
+    margin:0;
+    padding:0;
+}
+.homeNav li a{
+     color:grey !important;
+}
+.hWork{
+    position: absolute;
+    bottom: -175px;
+    left:-175px;
+    width: 150px;
+    height: 50px;
+    border: 2px solid grey;
+    border-radius: 5px;
+    font-size: 35px;
+}
+.hContact{
+    position: absolute;
+    bottom: -175px;
+    left:175px;
+    width: 150px;
+    height: 50px;
+    border: 2px solid grey;
+    border-radius: 5px;
+    font-size: 35px;
+}
+.hAbout{
+    position: absolute;
+    bottom: 150px;
+    left:-10px;
+    width: 150px;
+    height: 50px;
+    border: 2px solid grey;
+    border-radius: 5px;
+    font-size: 35px;
+}
+
+/*Work page css*/
+#work{
+    min-height:100vh;
+}
+.workImages{
+    margin-top: 100px;
+}
+.carousel-indicators li{
+    border-color: grey;
+}
+.carousel-indicators .active{
+    background-color: grey;
+}
+.item{
+    height:50vh;
+}
+hr{
+    border-top:2px solid lightgrey;
+}
+.thumbnail {
+    height: 300px; 
+    overflow: hidden;
+    
+}
+.thumbnail img{
+    width: 150px;
+}
