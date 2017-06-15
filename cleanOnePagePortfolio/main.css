@@ -97,3 +97,75 @@ hr{
 .thumbnail img{
     width: 150px;
 }
+/*About page CSS*/
+
+.imagePortrait{
+    margin:0 auto;
+    margin-top: 10vh;
+    height:35vh;
+    width: 35vh;
+    border-radius: 100%;
+    border:2px solid grey;
+    overflow: hidden;
+}
+.aboutSkills{
+    margin:10px 0;
+}
+.skillCircleArea{
+    position: relative;
+    height:300px;
+    width:300px;
+    border-radius: 100%;
+    border:2px solid grey;
+}
+.circleMiddle{
+    position: absolute;
+    height:250px;
+    width:250px;
+    top:25px;
+    left: 25px;
+    border-radius: 100%;
+    border:2px solid grey;
+    background-color: white;
+    box-shadow: 0 0 5px black;
+}
+
+
+#container {
+  margin: 20px;
+  width: 200px;
+  height: 200px;
+}
+.c100 > span{
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0 auto;
+    top: 50px;
+    left:80px;
+    color:grey;
+    
+}
+.c100:hover > span {
+  /*width: 3.33em;*/
+  line-height: 1.5;
+  font-size: 16px;
+  color: #307bbb;
+  text-align: center;
+}
+.circle{
+    width: 240px;
+    margin:0 auto;
+    padding:0;
+}
+
+
+/*contact page css*/
+form{
+    display: inline;
+}
+.jumbotron{
+    background-color: white;
+}
+.contactBoard{
+    margin-top: 25vh;
+}
