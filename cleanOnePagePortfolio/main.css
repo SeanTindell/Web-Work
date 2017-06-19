@@ -41,8 +41,8 @@
 }
 .hWork{
     position: absolute;
-    bottom: -175px;
-    left:-175px;
+    top: 35px;
+    left:-250px;
     width: 150px;
     height: 50px;
     border: 2px solid grey;
@@ -51,8 +51,8 @@
 }
 .hContact{
     position: absolute;
-    bottom: -175px;
-    left:175px;
+    top: 35px;
+    left:200px;
     width: 150px;
     height: 50px;
     border: 2px solid grey;
@@ -61,8 +61,8 @@
 }
 .hAbout{
     position: absolute;
-    bottom: 150px;
-    left:-10px;
+    top: 175px;
+    left:-35px;
     width: 150px;
     height: 50px;
     border: 2px solid grey;
@@ -148,7 +148,7 @@ hr{
 .c100:hover > span {
   /*width: 3.33em;*/
   line-height: 1.5;
-  font-size: 16px;
+  font-size: 15px;
   color: #307bbb;
   text-align: center;
 }
