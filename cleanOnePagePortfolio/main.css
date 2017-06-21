@@ -18,6 +18,13 @@
     width: 150px;
     border-radius: 100%;
     border:2px solid grey;
+    overflow: hidden
+}
+.portrait img{
+    
+    width:175%;
+    
+    
 }
 .name{
     font-size: 35px;
@@ -108,6 +115,9 @@ hr{
     border:2px solid grey;
     overflow: hidden;
 }
+.imagePortrait img{
+    width: 175%;
+}
 .aboutSkills{
     margin:10px 0;
 }
@@ -168,4 +178,9 @@ form{
 }
 .contactBoard{
     margin-top: 25vh;
+}
+
+
+nav{
+    display:none;
 }
