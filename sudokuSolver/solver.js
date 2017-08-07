@@ -3,6 +3,10 @@ var solved = false,
 puzzle,
 checkNum = false,
 currentSquare = 0;
+var position = 0,
+help =0,
+currentNum=0,
+count = 0;
 
 
 // puzzle = [
@@ -36,10 +40,11 @@ var Square = function( position ){
     this.currentNum = 1;
     this.locked = false;
     this.currentNumPos=0;
+    this.temp = false;
 }
 
 
-console.log(puzzle.length);
+// console.log(puzzle.length);
 
 
 function loadPuzzle(puz){
@@ -55,40 +60,122 @@ function loadPuzzle(puz){
             workingSquare.currentNum = 0;
             workingSquare.currentNumPos =0;
             workingSquare.locked = false;
+            workingSquare.temp = false;
           }
           workingPuzzle.push(workingSquare);
     }
 }
 
 loadPuzzle(puzzle);
-console.log(workingPuzzle)
-console.log(checkRow(workingPuzzle));
-console.log(checkCol(workingPuzzle));
-console.log(checkSmallSquare(workingPuzzle));
-
 
 while(!solved){
-    while(!checkNum){
-        
-    
-        
-        checkNum =true;
-        
-    }
-    
-    
-    
-    
-    solved = true;
-}
+    count++;
+   while(!checkNum && count <10000){
+       count++;
+       while(workingPuzzle[position].locked)
+       {
+           position++;
+           if(position > workingPuzzle.length){
+               break;
+           }
+       }
+       
+       
+        loadNum(position, workingPuzzle[position].currentNumPos);
 
-function loadNum(pos){
-    workingPuzzle[pos].currentNum =  workingPuzzle[pos].numLeft[workingPuzzle[pos].currentNumPos];
+        //complete
+        if(checkNewNum(workingPuzzle)){
+            checkNum = true;
+            position++;
+        //complete
+        } else{
+            checkNum = false;
+            
+            workingPuzzle[position].currentNumPos++;
+
+            if(workingPuzzle[position].currentNumPos >= 9){
+                console.log(workingPuzzle[position].currentNumPos)
+                workingPuzzle[position].temp = true;
+                workingPuzzle[position].currentNumPos = 0;
+                workingPuzzle[position].currentNum = 0;
+                
+                while(workingPuzzle[position].temp == true ){
+                    position--;
+                }
+                while(workingPuzzle[position].locked == true){
+                    position--;
+                }
+                
+                if(workingPuzzle[position].currentNumPos >= 9){
+                    workingPuzzle[position].currentNumPos = 0;
+                }
+                 workingPuzzle[position].currentNum++;
+                 workingPuzzle[position].currentNumPos++;
+                 if(workingPuzzle[position].currentNumPos >= 9){
+                    workingPuzzle[position].currentNumPos = 0;
+                    workingPuzzle[position].currentNum = 0;
+                }
+                 for(var i = 0; i < workingPuzzle.length; i++){
+                     workingPuzzle[i].temp=false;
+                 }
+                 
+                // loadNum(position, workingPuzzle[position].currentNumPos);
+                // while(workingPuzzle[position].locked == true ){
+                //     console.log(position)
+                //     position--;
+                //     if(position <= 0){
+                //         break;
+                //     }
+                // }
+                
+                
+                
+            }
+        }
+        
+        
+        
+        
+        // testing
+   
+        // help++;
+        // if(help > 81 || checkNum){
+        //     help = 0;
+        //     break;
+        // }
+        // testing
+    }
+    for(var i = 0; i<workingPuzzle.length; i++){
+            if(checkNum && workingPuzzle[i].currentNum === 0 ){
+                solved = false;
+                 checkNum = false;
+                 break;
+            } 
+
+            solved = true;
+        }
+
+    
+}
+console.log(workingPuzzle)
+
+
+
+
+
+
+
+
+function loadNum(pos, num){
+    workingPuzzle[pos].currentNum =  workingPuzzle[pos].numLeft[num];
+    return workingPuzzle[pos].currentNum
 }
 function checkNewNum(puz){
-    // checkRow(puz);
-    checkCol(puz);
-    checkSmallSquare(puz);
+    if(checkRow(puz) && checkCol(puz) &&  checkSmallSquare(puz)){
+        return true;
+    } else {
+        return false;
+    }
 }
 
 function checkRow(puz){
@@ -147,33 +234,17 @@ function checkCol(puz){
 function checkSmallSquare(puz){
      var rowA =[], rowB =[], rowC = [];
      
-     for( var k = 0; k < 54; k += 6 ){
-         
-         for(var i = 0; i <= 18; i+=9){
-            for(var j = 0; j < 3; j++){
-                rowA.push(puz[j+i+k].currentNum);
-                console.log(j+i+k)
-                //console.log(puz[j+i+k].currentNum)
-                
-                
+     for(var l = 0; l < 81; l += 27){
+         for( var k = 0; k < 9; k += 3 ){
+             for(var i = 0; i <= 18; i+=9){
+                for(var j = 0; j < 3; j++){
+                    rowA.push(puz[l+j+i+k].currentNum);
+                }
             }
-        }
-        console.log(rowA)
-         rowB.push(rowA);
-         rowA = [];
-         
-         
+             rowB.push(rowA);
+             rowA = [];
+         }
      }
-     console.log(rowB)
-     
-     
-     
-     
-     
-     
-     
-     
-     
     
     //Checks the square
     for(var i = 0; i <rowB.length; i++){
@@ -188,9 +259,25 @@ function checkSmallSquare(puz){
     return true;
 }
 
+function updatePuzzle(){
+
+    for(var i = 0; i <puzzle.length; i++ ){
+        if(i%9 == 0 && i != 0){
+            $('body').append('<br>')
+        } 
+        if(workingPuzzle[i].locked == true ){
+            $('body').append('<div class = "square blue">'+workingPuzzle[i].currentNum+'</div>');
+        } else {
+            $('body').append('<div class = "square red">'+workingPuzzle[i].currentNum+'</div>');
+        }
+    }
+
+}
 
 
 $(document).ready(function(){
+    
+
     for(var i = 0; i <puzzle.length; i++ ){
         if(i%9 == 0 && i != 0){
             $('body').append('<br>')
@@ -202,3 +289,4 @@ $(document).ready(function(){
         }
     }
 });
+
