@@ -44,7 +44,105 @@ var Square = function( position ){
 }
 
 
-// console.log(puzzle.length);
+loadPuzzle(puzzle);
+
+while(!solved){
+    count++;
+   while(!checkNum ){
+       count++;
+      //works
+      while(workingPuzzle[position].locked == true){
+          if(position > workingPuzzle.length){
+              break;
+          }
+          position++;
+      }
+      //works
+      
+       loadNum(position, workingPuzzle[position].currentNumPos)
+        
+
+
+      if(checkNewNum(workingPuzzle) 
+      && position < workingPuzzle.length
+      && workingPuzzle[position].currentNum != 0){
+          
+           
+        
+        console.log('test current Number: '+ workingPuzzle[position].currentNumPos +' position: '+ position)
+            console.log(workingPuzzle)
+            
+            position++;
+           checkNum = true;
+                   console.log('test current Number: '+ workingPuzzle[position].currentNumPos +' position: '+ position)
+
+           
+       } else{
+            checkNum = false;
+
+            if(workingPuzzle[position].currentNumPos == 9){
+                    workingPuzzle[position].currentNumPos = 0;
+            } else{
+                    workingPuzzle[position].currentNumPos++;
+            }
+              
+            if(workingPuzzle[position].currentNumPos > 8){
+                //workingPuzzle[position].currentNumPos = 9;
+                loadNum(position, workingPuzzle[position].currentNumPos);
+                
+                goBack();
+
+                if(workingPuzzle[position].currentNumPos == 9){
+                    workingPuzzle[position].currentNumPos = 0;
+                } else{
+                     workingPuzzle[position].currentNumPos++;
+                }
+                
+            }      
+            loadNum(position, workingPuzzle[position].currentNumPos)
+            console.log('current Number: '+ loadNum(position, workingPuzzle[position].currentNumPos) +' position: '+ position)
+       }
+       
+    }
+    
+    
+    if(position >= 80){
+        solved = true;
+    }
+    else{
+        solved = false;
+           checkNum = false;
+    }
+    console.log(position)
+    
+    
+         
+          
+    // for(var i = 0; i<workingPuzzle.length; i++){
+    //         if(checkNum && workingPuzzle[i].currentNum === 0 ){
+    //             solved = false;
+    //              checkNum = false;
+    //              break;
+    //         }
+    //         solved = true;
+    //     }
+}
+for(var i = 0; i < workingPuzzle[position].numLeft.length-1; i++ ){
+        if(checkNewNum(workingPuzzle)
+        && workingPuzzle[position].currentNum != 0){
+            break;
+        }
+        workingPuzzle[position].currentNumPos=i;
+        loadNum(position, workingPuzzle[position].currentNumPos)
+    }
+
+
+
+
+
+
+
+console.log(workingPuzzle)
 
 
 function loadPuzzle(puz){
@@ -56,109 +154,53 @@ function loadPuzzle(puz){
             workingSquare.currentNum = puz[i];
             workingSquare.locked = true;
           } else {
-            workingSquare.numLeft=[1,2,3,4,5,6,7,8,9];
+            workingSquare.numLeft=[1,2,3,4,5,6,7,8,9,0];
             workingSquare.currentNum = 0;
-            workingSquare.currentNumPos =0;
+            workingSquare.currentNumPos =9;
             workingSquare.locked = false;
             workingSquare.temp = false;
           }
           workingPuzzle.push(workingSquare);
     }
 }
+function backLock(){
 
-loadPuzzle(puzzle);
-
-while(!solved){
-    count++;
-   while(!checkNum && count <10000){
-       count++;
-       while(workingPuzzle[position].locked)
-       {
-           position++;
-           if(position > workingPuzzle.length){
-               break;
-           }
-       }
-       
-       
-        loadNum(position, workingPuzzle[position].currentNumPos);
-
-        //complete
-        if(checkNewNum(workingPuzzle)){
-            checkNum = true;
-            position++;
-        //complete
-        } else{
-            checkNum = false;
-            
-            workingPuzzle[position].currentNumPos++;
-
-            if(workingPuzzle[position].currentNumPos >= 9){
-                console.log(workingPuzzle[position].currentNumPos)
-                workingPuzzle[position].temp = true;
-                workingPuzzle[position].currentNumPos = 0;
-                workingPuzzle[position].currentNum = 0;
-                
-                while(workingPuzzle[position].temp == true ){
-                    position--;
-                }
-                while(workingPuzzle[position].locked == true){
-                    position--;
-                }
-                
-                if(workingPuzzle[position].currentNumPos >= 9){
-                    workingPuzzle[position].currentNumPos = 0;
-                }
-                 workingPuzzle[position].currentNum++;
-                 workingPuzzle[position].currentNumPos++;
-                 if(workingPuzzle[position].currentNumPos >= 9){
-                    workingPuzzle[position].currentNumPos = 0;
-                    workingPuzzle[position].currentNum = 0;
-                }
-                 for(var i = 0; i < workingPuzzle.length; i++){
-                     workingPuzzle[i].temp=false;
-                 }
-                 
-                // loadNum(position, workingPuzzle[position].currentNumPos);
-                // while(workingPuzzle[position].locked == true ){
-                //     console.log(position)
-                //     position--;
-                //     if(position <= 0){
-                //         break;
-                //     }
-                // }
-                
-                
-                
-            }
-        }
-        
-        
-        
-        
-        // testing
-   
-        // help++;
-        // if(help > 81 || checkNum){
-        //     help = 0;
-        //     break;
-        // }
-        // testing
+     while(workingPuzzle[position].locked){
+        checkBackPos();
     }
-    for(var i = 0; i<workingPuzzle.length; i++){
-            if(checkNum && workingPuzzle[i].currentNum === 0 ){
-                solved = false;
-                 checkNum = false;
-                 break;
-            } 
-
-            solved = true;
-        }
-
+    if(workingPuzzle[position].currentNumPos == 8){
+        backNine();
+    }
     
 }
-console.log(workingPuzzle)
 
+function backNine(){
+    
+    while(workingPuzzle[position].currentNumPos == 8 ){
+        workingPuzzle[position].currentNumPos = 9;
+        loadNum(position, workingPuzzle[position].currentNumPos);
+        checkBackPos();
+    }
+    if(workingPuzzle[position].locked){
+        backLock();
+    }
+    
+}
+
+function goBack(){
+    
+    checkBackPos();
+    backLock();
+    backNine();
+}
+
+
+function checkBackPos(){
+    position--;
+    if(position < 0){
+        position = 0;
+    }
+}
 
 
 
@@ -168,9 +210,11 @@ console.log(workingPuzzle)
 
 function loadNum(pos, num){
     workingPuzzle[pos].currentNum =  workingPuzzle[pos].numLeft[num];
-    return workingPuzzle[pos].currentNum
+    return workingPuzzle[pos].currentNumPos;
+    
 }
 function checkNewNum(puz){
+    
     if(checkRow(puz) && checkCol(puz) &&  checkSmallSquare(puz)){
         return true;
     } else {
@@ -259,34 +303,19 @@ function checkSmallSquare(puz){
     return true;
 }
 
-function updatePuzzle(){
 
-    for(var i = 0; i <puzzle.length; i++ ){
-        if(i%9 == 0 && i != 0){
-            $('body').append('<br>')
-        } 
-        if(workingPuzzle[i].locked == true ){
-            $('body').append('<div class = "square blue">'+workingPuzzle[i].currentNum+'</div>');
-        } else {
-            $('body').append('<div class = "square red">'+workingPuzzle[i].currentNum+'</div>');
-        }
-    }
-
-}
 
 
 $(document).ready(function(){
     
-
     for(var i = 0; i <puzzle.length; i++ ){
-        if(i%9 == 0 && i != 0){
-            $('body').append('<br>')
-        } 
+        
         if(workingPuzzle[i].locked == true ){
-            $('body').append('<div class = "square blue">'+workingPuzzle[i].currentNum+'</div>');
+            $('#'+(i+1)).html('<div class = " blue">'+workingPuzzle[i].currentNum+'</div>');
         } else {
-            $('body').append('<div class = "square red">'+workingPuzzle[i].currentNum+'</div>');
+             $('#'+(i+1)).html('<div class = " red">'+workingPuzzle[i].currentNum+'</div>');
         }
     }
+
 });
 
