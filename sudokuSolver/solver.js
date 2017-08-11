@@ -9,17 +9,7 @@ currentNum=0,
 count = 0;
 
 
-// puzzle = [
-//     5,3,'','',7,'','','','',
-//     6,'','',1,9,5,'','','',
-//     '',9,8,'','','','',6,'',
-//     8,'','','',6,'','','',3,
-//     4,'','',8,'',3,'','',1,
-//     7,'','','',2,'','','',6,
-//     '',6,'','','','',2,8,'',
-//     '','','',4,1,9,'','',5,
-//     '','','','',8,'','',7,9
-// ]
+
 puzzle = [
     '',2,'',9,7,3,'',5,'',
     '','','',2,1,8,'','','',
@@ -31,6 +21,30 @@ puzzle = [
     7,9,1,4,'','','','','',
     '','',5,'',8,6,'','',''
 ]
+// puzzle = [
+//     '','','','','','','','',8,
+//     1,5,2,'','','','',6,9,
+//     3,'','','','','',4,1,'',
+//     2,'',3,'',1,'',9,5,7,
+//     7,'','',8,3,'','',2,1,
+//     '','',6,7,'','',8,3,4,
+//     8,'','',2,'','',1,4,3,
+//     '','','','','','','',8,5,
+//     '','',4,3,'','','','',6
+// ]
+// puzzle = [
+//     6,'',4,'',3,'',9,'','',
+//     1,'','',8,'','',2,5,'',
+//     '','','',1,'','','','',6,
+//     '','',1,3,4,'',8,7,'',
+//     2,6,'','',5,'','','','',
+//     4,'',3,9,'','',1,'','',
+//     '','','','','','',4,9,8,
+//     '','','','','','','','','',
+//     5,'','',4,'','','',1,''
+
+    
+// ]
 
 var workingPuzzle=[];
 
@@ -60,23 +74,12 @@ while(!solved){
       //works
       
        loadNum(position, workingPuzzle[position].currentNumPos)
-        
-
 
       if(checkNewNum(workingPuzzle) 
       && position < workingPuzzle.length
       && workingPuzzle[position].currentNum != 0){
-          
-           
-        
-        console.log('test current Number: '+ workingPuzzle[position].currentNumPos +' position: '+ position)
-            console.log(workingPuzzle)
-            
             position++;
            checkNum = true;
-                   console.log('test current Number: '+ workingPuzzle[position].currentNumPos +' position: '+ position)
-
-           
        } else{
             checkNum = false;
 
@@ -85,9 +88,7 @@ while(!solved){
             } else{
                     workingPuzzle[position].currentNumPos++;
             }
-              
             if(workingPuzzle[position].currentNumPos > 8){
-                //workingPuzzle[position].currentNumPos = 9;
                 loadNum(position, workingPuzzle[position].currentNumPos);
                 
                 goBack();
@@ -100,7 +101,6 @@ while(!solved){
                 
             }      
             loadNum(position, workingPuzzle[position].currentNumPos)
-            console.log('current Number: '+ loadNum(position, workingPuzzle[position].currentNumPos) +' position: '+ position)
        }
        
     }
@@ -113,28 +113,21 @@ while(!solved){
         solved = false;
            checkNum = false;
     }
-    console.log(position)
-    
-    
-         
-          
-    // for(var i = 0; i<workingPuzzle.length; i++){
-    //         if(checkNum && workingPuzzle[i].currentNum === 0 ){
-    //             solved = false;
-    //              checkNum = false;
-    //              break;
-    //         }
-    //         solved = true;
-    //     }
+
 }
-for(var i = 0; i < workingPuzzle[position].numLeft.length-1; i++ ){
+console.log(workingPuzzle)
+//gets final number
+if(position!= 81){
+    for(var i = 0; i < workingPuzzle[position].numLeft.length-1; i++ ){
         if(checkNewNum(workingPuzzle)
         && workingPuzzle[position].currentNum != 0){
             break;
         }
         workingPuzzle[position].currentNumPos=i;
         loadNum(position, workingPuzzle[position].currentNumPos)
-    }
+}
+}
+
 
 
 
