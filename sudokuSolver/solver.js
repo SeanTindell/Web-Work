@@ -115,7 +115,7 @@ while(!solved){
     }
 
 }
-console.log(workingPuzzle)
+
 //gets final number
 if(position!= 81){
     for(var i = 0; i < workingPuzzle[position].numLeft.length-1; i++ ){
@@ -125,17 +125,9 @@ if(position!= 81){
         }
         workingPuzzle[position].currentNumPos=i;
         loadNum(position, workingPuzzle[position].currentNumPos)
+    }
 }
-}
 
-
-
-
-
-
-
-
-console.log(workingPuzzle)
 
 
 function loadPuzzle(puz){
