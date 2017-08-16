@@ -1,134 +1,151 @@
- var $ =jQuery;
+var $ =jQuery;
 var solved = false,
-puzzle,
-checkNum = false,
-currentSquare = 0;
-var position = 0,
-help =0,
-currentNum=0,
-count = 0;
-
-
-
-puzzle = [
-    '',2,'',9,7,3,'',5,'',
-    '','','',2,1,8,'','','',
-    '','',3,6,4,'','','','',
-    '','',2,8,3,9,4,'','',
-    '',4,6,5,2,7,8,'',1,
-    '',5,'','',6,4,2,'',7,
-    '','','','','','','','','',
-    7,9,1,4,'','','','','',
-    '','',5,'',8,6,'','',''
-]
-// puzzle = [
-//     '','','','','','','','',8,
-//     1,5,2,'','','','',6,9,
-//     3,'','','','','',4,1,'',
-//     2,'',3,'',1,'',9,5,7,
-//     7,'','',8,3,'','',2,1,
-//     '','',6,7,'','',8,3,4,
-//     8,'','',2,'','',1,4,3,
-//     '','','','','','','',8,5,
-//     '','',4,3,'','','','',6
-// ]
-// puzzle = [
-//     6,'',4,'',3,'',9,'','',
-//     1,'','',8,'','',2,5,'',
-//     '','','',1,'','','','',6,
-//     '','',1,3,4,'',8,7,'',
-//     2,6,'','',5,'','','','',
-//     4,'',3,9,'','',1,'','',
-//     '','','','','','',4,9,8,
-//     '','','','','','','','','',
-//     5,'','',4,'','','',1,''
-
-    
-// ]
-
-var workingPuzzle=[];
-
-var Square = function( position ){
-    this.postition = position;
-    this.numLeft = [];
-    this.currentNum = 1;
-    this.locked = false;
-    this.currentNumPos=0;
-    this.temp = false;
-}
-
-
-loadPuzzle(puzzle);
-
-while(!solved){
-    count++;
-   while(!checkNum ){
-       count++;
-      //works
-      while(workingPuzzle[position].locked == true){
-          if(position > workingPuzzle.length){
-              break;
-          }
-          position++;
-      }
-      //works
-      
-       loadNum(position, workingPuzzle[position].currentNumPos)
-
-      if(checkNewNum(workingPuzzle) 
-      && position < workingPuzzle.length
-      && workingPuzzle[position].currentNum != 0){
-            position++;
-           checkNum = true;
-       } else{
-            checkNum = false;
-
-            if(workingPuzzle[position].currentNumPos == 9){
-                    workingPuzzle[position].currentNumPos = 0;
-            } else{
-                    workingPuzzle[position].currentNumPos++;
-            }
-            if(workingPuzzle[position].currentNumPos > 8){
-                loadNum(position, workingPuzzle[position].currentNumPos);
-                
-                goBack();
-
-                if(workingPuzzle[position].currentNumPos == 9){
-                    workingPuzzle[position].currentNumPos = 0;
-                } else{
-                     workingPuzzle[position].currentNumPos++;
-                }
-                
-            }      
-            loadNum(position, workingPuzzle[position].currentNumPos)
-       }
-       
-    }
-    
-    
-    if(position >= 80){
-        solved = true;
-    }
-    else{
-        solved = false;
-           checkNum = false;
-    }
-
-}
-
-//gets final number
-if(position!= 81){
-    for(var i = 0; i < workingPuzzle[position].numLeft.length-1; i++ ){
-        if(checkNewNum(workingPuzzle)
-        && workingPuzzle[position].currentNum != 0){
-            break;
+    puzzle,
+    checkNum = false,
+    currentSquare = 0,
+    position = 0,
+    help =0,
+    currentNum=0,
+    count = 0,
+    puzzle = [];
+    var workingPuzzle=[];
+    var Square = function( position ){
+            this.postition = position;
+            this.numLeft = [];
+            this.currentNum = 1;
+            this.locked = false;
+            this.currentNumPos=0;
+            this.temp = false;
         }
-        workingPuzzle[position].currentNumPos=i;
-        loadNum(position, workingPuzzle[position].currentNumPos)
+        
+    var clicked =false;    
+        
+function runSolver(){
+    
+
+
+    
+    
+    
+    
+    // puzzle = [
+    //     '',2,'',9,7,3,'',5,'',
+    //     '','','',2,1,8,'','','',
+    //     '','',3,6,4,'','','','',
+    //     '','',2,8,3,9,4,'','',
+    //     '',4,6,5,2,7,8,'',1,
+    //     '',5,'','',6,4,2,'',7,
+    //     '','','','','','','','','',
+    //     7,9,1,4,'','','','','',
+    //     '','',5,'',8,6,'','',''
+    // ]
+    // puzzle = [
+    //     '','','','','','','','',8,
+    //     1,5,2,'','','','',6,9,
+    //     3,'','','','','',4,1,'',
+    //     2,'',3,'',1,'',9,5,7,
+    //     7,'','',8,3,'','',2,1,
+    //     '','',6,7,'','',8,3,4,
+    //     8,'','',2,'','',1,4,3,
+    //     '','','','','','','',8,5,
+    //     '','',4,3,'','','','',6
+    // ]
+    // puzzle = [
+    //     6,'',4,'',3,'',9,'','',
+    //     1,'','',8,'','',2,5,'',
+    //     '','','',1,'','','','',6,
+    //     '','',1,3,4,'',8,7,'',
+    //     2,6,'','',5,'','','','',
+    //     4,'',3,9,'','',1,'','',
+    //     '','','','','','',4,9,8,
+    //     '','','','','','','','','',
+    //     5,'','',4,'','','',1,''
+    
+        
+    // ]
+    
+    
+    
+    // var Square = function( position ){
+    //     this.postition = position;
+    //     this.numLeft = [];
+    //     this.currentNum = 1;
+    //     this.locked = false;
+    //     this.currentNumPos=0;
+    //     this.temp = false;
+    // }
+    
+    
+    loadPuzzle(puzzle);
+    while(!solved){
+        count++;
+       while(!checkNum ){
+           count++;
+          //works
+          while(workingPuzzle[position].locked == true){
+              if(position > workingPuzzle.length){
+                  break;
+              }
+              position++;
+          }
+          //works
+          
+           loadNum(position, workingPuzzle[position].currentNumPos)
+    
+          if(checkNewNum(workingPuzzle) 
+          && position < workingPuzzle.length
+          && workingPuzzle[position].currentNum != 0){
+                position++;
+               checkNum = true;
+           } else{
+                checkNum = false;
+    
+                if(workingPuzzle[position].currentNumPos == 9){
+                        workingPuzzle[position].currentNumPos = 0;
+                } else{
+                        workingPuzzle[position].currentNumPos++;
+                }
+                if(workingPuzzle[position].currentNumPos > 8){
+                    loadNum(position, workingPuzzle[position].currentNumPos);
+                    
+                    goBack();
+    
+                    if(workingPuzzle[position].currentNumPos == 9){
+                        workingPuzzle[position].currentNumPos = 0;
+                    } else{
+                         workingPuzzle[position].currentNumPos++;
+                    }
+                    
+                }      
+                loadNum(position, workingPuzzle[position].currentNumPos)
+           }
+           
+        }
+        
+        
+        if(position >= 80){
+            solved = true;
+        }
+        else{
+            solved = false;
+               checkNum = false;
+        }
+    
     }
+    
+    //gets final number
+    if(position!= 81){
+        for(var i = 0; i < workingPuzzle[position].numLeft.length-1; i++ ){
+            if(checkNewNum(workingPuzzle)
+            && workingPuzzle[position].currentNum != 0){
+                break;
+            }
+            workingPuzzle[position].currentNumPos=i;
+            loadNum(position, workingPuzzle[position].currentNumPos)
+        }
+    }
+
 }
-
-
 
 function loadPuzzle(puz){
    var workingSquare;
@@ -291,16 +308,45 @@ function checkSmallSquare(puz){
 
 
 
+
 $(document).ready(function(){
-    
-    for(var i = 0; i <puzzle.length; i++ ){
-        
-        if(workingPuzzle[i].locked == true ){
-            $('#'+(i+1)).html('<div class = " blue">'+workingPuzzle[i].currentNum+'</div>');
-        } else {
-             $('#'+(i+1)).html('<div class = " red">'+workingPuzzle[i].currentNum+'</div>');
+    //runSolver();
+    $('.solver').click(function(){
+        if(!clicked){
+            clicked = true;
+            for(var i = 0; i <81; i++ ){
+             puzzle.push($('#'+(i+1)+ ' input').val());
+         }
+             runSolver();
+             for(var i = 0; i <puzzle.length; i++ ){
+            
+                if(workingPuzzle[i].locked == true ){
+                    $('#'+(i+1)).html('<div class = " blue">'+workingPuzzle[i].currentNum+'</div>');
+                } else {
+                     $('#'+(i+1)).html('<div class = " red">'+workingPuzzle[i].currentNum+'</div>');
+                }
+            }
+            
+            $('.solver').html("Reset");
+        } else{
+            clicked = false;
+            
+            
+            for(var i = 0; i <puzzle.length; i++ ){
+                $('#'+(i+1)).html('<input type="number" maxlength="1" min="1" max="9"/>');
+            }
+            puzzle = [];
+            $('.solver').html("Solve");
+            
         }
-    }
+        
+       
+         
+       
+    });
+    
+    
+    
 
 });
 
