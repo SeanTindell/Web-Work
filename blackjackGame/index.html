@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Blackjack Game</title>
+        <link rel="stylesheet" href="main.css" type="text/css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h1 class = "text-center">Blackjack Game</h1>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 text-center hand">
+                <h3>Dealer</h3>
+                <span class = 'handDealer'></span>
+            </div>
+            <div class="col-xs-6 text-center hand">
+                <h3>Player</h3>
+                <button class="btn btn-primary hit">Hit</button>
+                <button class="btn btn-danger hold">Hold</button>
+                <span class = 'handPlayer'></span>
+            </div>
+        </div>
+        <div class="row">
+            <h1 class="col-xs-12 text-center">Winner: <span id = "winner"></span></h1>
+        </div>
+    </body>
+    <footer>
+        <script  src= "main.js"></script>
+        
+    </footer>
+</html>
