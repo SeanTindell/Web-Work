@@ -79,6 +79,20 @@ function checkTurn(){
         while(checkHand(dealerHand) < 16){
             dealCard();
         }
+        console.log(checkHand(dealerHand))
+        console.log(checkHand(playerHand))
+        
+        if(checkHand(playerHand) > checkHand(dealerHand)){
+             $('#winner').html('Player');
+        }
+        if(checkHand(playerHand) == checkHand(dealerHand)){
+            $('#winner').html('Draw');
+        }
+        if(busted == true){
+            $('#winner').html('Player');
+            $('.hit').addClass('disabled');
+            $('.hold').addClass('disabled');
+        }
     }
 }
 
