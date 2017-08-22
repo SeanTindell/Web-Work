@@ -79,8 +79,7 @@ function checkTurn(){
         while(checkHand(dealerHand) < 16){
             dealCard();
         }
-        console.log(checkHand(dealerHand))
-        console.log(checkHand(playerHand))
+        busted = true;
         
         if(checkHand(playerHand) > checkHand(dealerHand)){
              $('#winner').html('Player');
@@ -88,11 +87,12 @@ function checkTurn(){
         if(checkHand(playerHand) == checkHand(dealerHand)){
             $('#winner').html('Draw');
         }
-        if(busted == true){
+        if(checkHand(playerHand) < checkHand(dealerHand) && checkHand(dealerHand)<=21){
+            $('#winner').html('Dealer');
+        } else{
             $('#winner').html('Player');
-            $('.hit').addClass('disabled');
-            $('.hold').addClass('disabled');
         }
+        
     }
 }
 
@@ -136,8 +136,11 @@ $(document).ready(function(){
     
     
     $('.hit').click(function(){
-        dealCard();
-        checkTurn();
+        if(!busted){
+            dealCard();
+            checkTurn();
+        }
+        
     });
     
     $('.hold').click(function(){
