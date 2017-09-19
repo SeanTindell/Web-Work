@@ -122,7 +122,6 @@ function startGame(){
     
     loadDeck();
     firstDeal();
-   
 }
 
 
@@ -140,7 +139,6 @@ $(document).ready(function(){
             dealCard();
             checkTurn();
         }
-        
     });
     
     $('.hold').click(function(){
