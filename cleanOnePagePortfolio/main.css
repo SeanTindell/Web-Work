@@ -184,3 +184,8 @@ form{
 nav{
     display:none;
 }
+img{
+    min-height: 100px;
+    min-width: 50px;
+    background-color: blue;
+}

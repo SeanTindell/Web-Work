@@ -157,3 +157,9 @@ footer{
     vertical-align:text-bottom;
 
 }
+
+img{
+    min-height: 100px;
+    min-width: 50px;
+    background-color: blue;
+}
