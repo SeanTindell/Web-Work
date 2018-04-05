@@ -1,0 +1,20 @@
+{
+  "name": "portfoliov2",
+  "version": "1.0.0",
+  "description": "This will be a second version of my portfolio done in a different way! <a href = \"https://preview.c9users.io/ravenn706/portfolio2/index.html?_c9_id=livepreview0&_c9_host=https://ide.c9.io\">This can be viewed here</a>",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SeanTindell/portfolio2.git"
+  },
+  "author": "sean tindell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SeanTindell/portfolio2/issues"
+  },
+  "homepage": "https://github.com/SeanTindell/portfolio2#readme"
+}
